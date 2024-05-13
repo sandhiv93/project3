@@ -1,61 +1,46 @@
-
-public class Account {
-    private double balance;
-
-    // Constructor with no arguments
-    public Account() {
-        this.balance = 0.0;
+public class Employee {
+    //attributes created id , name and salary
+    private int id;
+    private String name;
+    private double salary;
+    //we created constructor with class name
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+    //creating method raise salary
+    public void raiseSalary(double percent) {
+        double increase = salary * percent / 100.0;
+        salary += increase;
     }
 
-    // Constructor with two arguments
-    public Account(double initialBalance) {
-        this.balance = initialBalance;
+    //monthly salary * 12 =  annual salary
+    public double getAnnualSalary() {
+        return salary * 12;
     }
 
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            System.out.println("Withdrawn: " + amount);
-        } else {
-            System.out.println("Invalid withdrawal amount!");
-        }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public double getSalary() {
+        return salary;
     }
 
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            System.out.println("Deposited: " + amount);
-        } else {
-            System.out.println("Invalid deposit amount!");
-        }
+    public String toString() {
+        return "Employee ID: " + id + ", Name: " + name + ", Salary: " + salary;
     }
 
-    public double getBalance() {
-        return balance;
-    }
 }
 
 //main
+
 public class Main {
     public static void main(String[] args) {
-        // Create an Account object using the constructor with no arguments
-        Account account1 = new Account();
-        System.out.println("Initial Balance: " + account1.getBalance());
-
-        account1.deposit(100.0);
-        System.out.println("New Balance after Deposit: " + account1.getBalance());
-
-        account1.withdraw(50.0);
-        System.out.println("New Balance after Withdrawal: " + account1.getBalance());
-
-        // Create an Account object using the constructor with two arguments
-        Account account2 = new Account(500.0);
-        System.out.println("Initial Balance: " + account2.getBalance());
-
-        account2.deposit(200.0);
-        System.out.println("New Balance after Deposit: " + account2.getBalance());
-
-        account2.withdraw(1000.0);
-        System.out.println("New Balance after Withdrawal: " + account2.getBalance());
+        Employee employee = new Employee(1, "John Cena", 50000.0);
+        System.out.println(employee);
     }
 }
